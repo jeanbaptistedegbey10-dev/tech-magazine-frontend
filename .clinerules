@@ -1,0 +1,20 @@
+# SYSTEM RULES & ARCHITECTURE DIRECTIVES
+
+## DESIGN SYSTEM & FIGMA SPECIFICATIONS
+- Dark Mode Default: Background #0F172A, Surface/Card #1E293B, Primary Indigo #4F46E5, Text #F8FAFC, Muted #94A3B8.
+- Grid & Layout: Replicate the editorial tech magazine layout from Figma (Hero section, asymmetric grid, staggered post cards in /components/blog).
+- Typography: Clean sans-serif hierarchy, tracking-tight for post headings, leading-relaxed for body/excerpts.
+- Micro-interactions: Framer Motion for fade-in animations on load, subtle image zoom on hover (`group-hover:scale-105 transition-transform duration-500`).
+
+## STACK & CODE ACCURACY
+- Framework: Next.js 14+ App Router (`src/app/` directory).
+- Components location: UI components in `src/components/blog/`.
+- Styling: Tailwind CSS, `clsx`, `tailwind-merge` (`cn()` utility).
+- Icons: `lucide-react`.
+- UI Components: Shadcn UI primitives built over Radix UI.
+- Images: Next.js `<Image />` component with Unsplash tech fallbacks or WP GraphQL URLs.
+
+## WORKFLOW & AUTONOMY
+- Always read `AGENTS.md` before executing any task to understand current project state.
+- Always update `AGENTS.md` after completing a task.
+- NEVER leave placeholders or TODOs in code. All files generated must be production-ready and fully functional.
