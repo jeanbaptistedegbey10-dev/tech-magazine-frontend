@@ -46,8 +46,8 @@ export function UserMenu() {
     return (
       <span className="inline-flex items-center gap-3">
         <Link
-          href="/admin/dashboard"
-          title="Espace Admin (démo)"
+          href="/admin/login"
+          title="Espace Admin — connexion"
           className="hidden text-xs text-muted-foreground transition-colors hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline"
         >
           Espace Admin
@@ -69,8 +69,8 @@ export function UserMenu() {
   return (
     <div className="flex items-center gap-2">
       <Link
-        href="/admin/dashboard"
-        title="Espace Admin (démo)"
+        href="/admin/login"
+        title="Espace Admin — connexion"
         className="hidden text-xs text-muted-foreground transition-colors hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline"
       >
         Espace Admin
