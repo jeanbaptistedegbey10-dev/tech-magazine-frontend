@@ -55,6 +55,11 @@
   --color-surface: var(--figma-surface);
   --color-ink: var(--figma-text);
   --color-brand: var(--figma-primary);
+  /*
+   * Editorial link / accent ink (indigo-300 on the dark canvas, indigo-700 in
+   * the light theme) so a single `text-link` utility stays readable in both.
+   */
+  --color-link: var(--figma-link);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -80,6 +85,7 @@
   --figma-text: #f8fafc;
   --figma-muted: #94a3b8;
   --figma-border: rgb(148 163 184 / 18%);
+  --figma-link: #a5b4fc;
 
   --background: var(--figma-background);
   --foreground: var(--figma-text);
@@ -148,6 +154,57 @@
   --sidebar-primary: var(--figma-primary);
   --sidebar-primary-foreground: var(--figma-text);
   --sidebar-accent: #273549;
+  --sidebar-accent-foreground: var(--figma-text);
+  --sidebar-border: var(--figma-border);
+  --sidebar-ring: var(--figma-primary);
+}
+
+/*
+ * ── Light theme ─────────────────────────────────────────────────────────────
+ * Dark is still the product default: the raw Figma palette sits on `:root`, so
+ * the server-rendered HTML is already dark *before* next-themes runs and there
+ * is no flash of a light page. The theme toggle adds `.light` or `.dark` to
+ * `<html>` (see `src/components/theme-provider.tsx`); `.light` repaints every
+ * semantic token **and** the raw Figma aliases (`bg-canvas`, `bg-surface`,
+ * `text-ink`, `text-link`) with the daylight editorial palette while keeping the
+ * indigo brand hue.
+ *
+ * Contrast notes: body copy uses slate-600 (`#475569`) instead of the dark-mode
+ * slate-400 so it stays readable on white, and `--figma-link` drops from
+ * indigo-300 to indigo-700 for the same reason.
+ */
+.light {
+  --figma-background: #f8fafc;
+  --figma-surface: #f1f5f9;
+  --figma-primary: #4f46e5;
+  --figma-text: #0f172a;
+  --figma-muted: #475569;
+  --figma-border: rgb(15 23 42 / 12%);
+  --figma-link: #4338ca;
+
+  --background: var(--figma-background);
+  --foreground: var(--figma-text);
+  --card: #ffffff;
+  --card-foreground: var(--figma-text);
+  --popover: #ffffff;
+  --popover-foreground: var(--figma-text);
+  --primary: var(--figma-primary);
+  --primary-foreground: #f8fafc;
+  --secondary: var(--figma-surface);
+  --secondary-foreground: var(--figma-text);
+  --muted: var(--figma-surface);
+  --muted-foreground: var(--figma-muted);
+  --accent: var(--figma-surface);
+  --accent-foreground: var(--figma-text);
+  --destructive: #dc2626;
+  --border: var(--figma-border);
+  --input: rgb(15 23 42 / 14%);
+  --ring: var(--figma-primary);
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--figma-text);
+  --sidebar-primary: var(--figma-primary);
+  --sidebar-primary-foreground: #f8fafc;
+  --sidebar-accent: #e2e8f0;
   --sidebar-accent-foreground: var(--figma-text);
   --sidebar-border: var(--figma-border);
   --sidebar-ring: var(--figma-primary);

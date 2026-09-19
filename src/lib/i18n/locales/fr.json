@@ -1,0 +1,318 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "allStories": "Toutes les stories",
+    "techNews": "Tech News",
+    "development": "Développement",
+    "aiCloud": "IA & Cloud",
+    "about": "À propos",
+    "contact": "Contact",
+    "liveFeed": "Flux en direct"
+  },
+  "header": {
+    "brand": "TechPulse",
+    "tagline": "Magazine",
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher dans les archives...",
+    "searchResults": "{{count}} résultat{{s}} pour «{{query}}»",
+    "searchEmpty": "Aucun article trouvé. Essayez un autre mot-clé.",
+    "searchHint": "Tapez au moins 2 caractères pour explorer les archives.",
+    "searchLoading": "Recherche en cours…",
+    "searchError": "Impossible de contacter le CMS.",
+    "escapeToClose": "Échap pour fermer",
+    "language": "Langue",
+    "close": "Fermer",
+    "menu": "Menu",
+    "themeLight": "Passer au thème clair",
+    "themeDark": "Passer au thème sombre"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "Créer un compte",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "confirmPassword": "Confirmer le mot de passe",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà inscrit ?",
+    "seePlans": "Voir les formules",
+    "comparePlans": "Comparer les formules",
+    "backToReading": "Retour à la lecture",
+    "myAccount": "Mon compte",
+    "signOut": "Se déconnecter",
+    "dashboard": {
+      "accountStatus": "Statut du compte",
+      "freeTier": "Compte Gratuit",
+      "freeTierBody": "Vous avez accès aux articles gratuits. Passez à Premium pour débloquer toutes les enquêtes exclusives.",
+      "upgradeCta": "Passer à Premium",
+      "settingsTitle": "Paramètres du compte",
+      "signOutHint": "Cliquez pour vous déconnecter de votre compte.",
+      "authInfo": "Informations de connexion",
+      "provider": "Fournisseur",
+      "session": "Session",
+      "active": "Actif",
+      "demoNote": "Démo — les données du compte sont issues de votre connexion Google. L'abonnement Premium est simulé.",
+      "premiumTier": "Compte Premium",
+      "premiumTierBody": "Votre abonnement Premium est actif. Vous avez accès à toutes les enquêtes exclusives, sans publicité et avec la newsletter hebdomadaire.",
+      "successBanner": "Félicitations ! Votre abonnement Premium est désormais actif (Mode Démo).",
+      "browseStories": "Toutes les stories",
+      "greeting": "Bonjour, {{name}}."
+    }
+  },
+  "subscribe": {
+    "pageTitle": "S'abonner — TechPulse",
+    "subtitle": "Soutenez un journalisme tech indépendant.",
+    "free": "Free Reader",
+    "freeDesc": "L'essentiel de TechPulse, gratuitement.",
+    "premium": "TechPulse Premium",
+    "premiumDesc": "Le meilleur de la rédaction, sans limites.",
+    "freeFeatures": [
+      "5 articles par mois",
+      "Newsletter mensuelle",
+      "Lecture avec publicité"
+    ],
+    "premiumFeatures": [
+      "Articles et enquêtes illimités",
+      "Accès aux contenus Premium",
+      "Lecture sans publicité",
+      "Newsletter hebdomadaire",
+      "Support lecteur prioritaire"
+    ],
+    "pricingMonthly": "{{price}} euro/mois",
+    "pricingYearly": "ou {{price}} euro/an — deux mois offerts.",
+    "pricingForever": "pour toujours",
+    "ctaFree": "Créer un compte gratuit",
+    "ctaPremium": "S'abonner à Premium",
+    "alreadySubscribed": "Déjà abonné ? Se connecter",
+    "benefitsHeading": "Pourquoi passer à Premium ?",
+    "benefit1Title": "Accès illimité aux enquêtes exclusives",
+    "benefit1Body": "Investigations longues, dossiers et analyses réservées, sans quota mensuel.",
+    "benefit2Title": "Lecture sans publicité",
+    "benefit2Body": "Confort total sur mobile comme sur grand écran, sans traceurs publicitaires.",
+    "benefit3Title": "Newsletter hebdomadaire",
+    "benefit3Body": "La sélection des éditeurs et les coulisses du reporting, chaque vendredi.",
+    "demoNote": "Démo — aucun paiement n'est collecté. Les boutons mènent vers l'inscription simulée.",
+    "sandboxBanner": "Mode Démo : Le système de paiement est en mode bac à sable (aucune carte réelle requise).",
+    "yearlyPrice": "{{price}} euro/an",
+    "yearlyBadge": "2 mois offerts",
+    "authRequired": "Vous devez être connecté avec Google pour finaliser cet abonnement. La simulation e-mail/mot de passe est locale et ne crée pas de session.",
+    "submitting": "Paiement en cours…",
+    "checkoutError": "Erreur de paiement. Réessayez.",
+    "eyebrow": "Abonnements",
+    "subheading": "Commencez gratuitement, passez à Premium quand vous voulez. Sans engagement.",
+    "recommended": "Recommandé"
+  },
+  "paywall": {
+    "heading": "Cet article est réservé aux abonnés TechPulse Premium",
+    "body": "Vous lisez un extrait. Débloquez l'enquête complète, sans publicité, et recevez la newsletter hebdomadaire des éditeurs.",
+    "benefits": [
+      "Accès illimité aux enquêtes exclusives",
+      "Lecture sans publicité, sur tous vos écrans",
+      "Newsletter hebdomadaire réservée aux membres"
+    ],
+    "ctaSubscribe": "S'abonner à partir de 9,99 €/mois",
+    "ctaLogin": "Déjà abonné ? Se connecter",
+    "footnote": "Sans engagement · Résiliable à tout moment · 99 €/an en formule annuelle"
+  },
+  "blog": {
+    "archive": {
+      "eyebrow": "L'archive",
+      "title": "Toutes les stories",
+      "emptyHeading": "Aucune story en ligne pour l'instant",
+      "emptyBody": "Le flux WordPress GraphQL n'a renvoyé aucun article publié. Publiez une story dans le CMS, puis rechargez cette page.",
+      "count": "{{count}} article{{s}} publié{{s}}, du plus récent au plus ancien",
+      "countLoading": "L'archive est en cours de réapprovisionnement"
+    },
+    "category": {
+      "eyebrow": "Le bureau",
+      "siblings": "Explorez les autres bureaux :",
+      "emptyHeading": "Rien de publié ici pour l'instant",
+      "emptyBodyCms": "Le magazine n'a pas pu contacter le flux WordPress GraphQL. {{error}}",
+      "emptyBodyNoPosts": "Le bureau {{name}} ne contient aucune story publiée. Publiez-en une dans le CMS, puis rechargez cette page.",
+      "count": "{{count}} article{{s}} classé{{s}} dans {{name}}",
+      "countEmpty": "Rien n'a encore été classé dans {{name}}"
+    },
+    "sidebar": {
+      "premiumHeading": "Passez à TechPulse Premium",
+      "premiumBody": "Enquêtes exclusives en illimité, lecture sans publicité et newsletter hebdomadaire.",
+      "benefits": [
+        "Accès illimité aux contenus Premium",
+        "Lecture sans publicité"
+      ],
+      "ctaPremium": "Découvrir Premium",
+      "categoriesHeading": "Explorer les rubriques",
+      "picksHeading": "Premium à ne pas manquer",
+      "unlockAll": "Débloquer tout Premium",
+      "sponsorEyebrow": "Advertisement",
+      "sponsorTitle": "Votre marque ici",
+      "sponsorBody": "Espace partenaire — touchez les décideurs tech qui lisent TechPulse.",
+      "sponsorCta": "Devenir sponsor",
+      "ariaLabel": "Barre latérale"
+    },
+    "author": {
+      "eyebrow": "La rédaction",
+      "bioFallback": "Tous les articles de {{name}} pour TechPulse Magazine.",
+      "count": "{{count}} article{{s}} rédigé{{s}}",
+      "emptyHeading": "Aucun article",
+      "countEmpty": "Aucune story publiée pour l'instant"
+    },
+    "article": {
+      "backLink": "Retour aux stories",
+      "recommendedEyebrow": "Garder le fil",
+      "recommendedHeading": "À lire ensuite",
+      "recommendedCta": "Toutes les stories",
+      "shareLabel": "Partager",
+      "shareOnX": "Partager sur X",
+      "shareOnLinkedIn": "Partager sur LinkedIn",
+      "shareOnWhatsApp": "Partager sur WhatsApp",
+      "copyLink": "Copier le lien",
+      "linkCopied": "Lien copié",
+      "commentsHeading": "Discussion ({{count}})",
+      "commentsEmpty": "Soyez le premier à réagir.",
+      "commentName": "Nom",
+      "commentEmail": "E-mail",
+      "commentBody": "Commentaire",
+      "commentPlaceholder": "Votre réaction à cette story…",
+      "commentSubmit": "Publier la réaction",
+      "commentSent": "Votre réaction a été publiée.",
+      "commentSentTime": "À l'instant",
+      "commentBadge": "Votre commentaire",
+      "writeAnother": "Écrire une autre réaction",
+      "discussionEyebrow": "Discussion",
+      "moderationNote": "Les commentaires sont modérés par la rédaction.",
+      "commentEmailNote": "Requis pour vous répondre — jamais affiché publiquement.",
+      "commentDemoNote": "Démo — publication simulée localement.",
+      "commentSentHeading": "Merci {{name}} !",
+      "commentSentBody": "Votre commentaire sur «{{title}}» a bien été publié ci-dessous.",
+      "commentSending": "Publication…",
+      "pictureCredit": "Image éditoriale du service photo de TechPulse.",
+      "filedIn": "Classé dans",
+      "reportedBy": "Rédigé par",
+      "moreStories": "Plus de stories TechPulse"
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact — TechPulse",
+    "eyebrow": "Contact",
+    "heading": "Écrivez à la rédaction.",
+    "subheading": "Un tuyau, une correction, une idée de partenariat ? Écrivez-nous — un éditeur lit chaque message.",
+    "channelsHeading": "Canaux de contact",
+    "newsroom": {
+      "title": "Rédaction",
+      "address": "redaction@techpulse.news",
+      "body": "Tuyaux, corrections et retours éditoriaux. Nous lisons tout."
+    },
+    "press": {
+      "title": "Presse",
+      "address": "presse@techpulse.news",
+      "body": "Lancements, embargos et demandes d'entretien pour les éditeurs."
+    },
+    "support": {
+      "title": "Support lecteurs",
+      "address": "support@techpulse.news",
+      "body": "Aide compte, lecture et newsletter — réponse sous deux jours ouvrés."
+    },
+    "form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "placeholderName": "Ada Lovelace",
+      "placeholderEmail": "ada@example.com",
+      "placeholderSubject": "Tuyau, correction, partenariat…",
+      "placeholderMessage": "Dites à la rédaction ce qui vous passe par la tête…",
+      "sending": "Envoi en cours…",
+      "send": "Envoyer le message",
+      "sentHeading": "Message reçu, {{name}}",
+      "sentBody": "Merci d'avoir écrit au sujet de «{{subject}}». La rédaction vous répondra à {{email}} sous deux jours.",
+      "writeAnother": "Envoyer un autre message",
+      "demoNote": "Formulaire de démo — l'envoi est simulé localement, rien ne quitte votre navigateur.",
+      "statusNote": "Votre message est en route vers la rédaction…"
+    }
+  },
+  "about": {
+    "pageTitle": "À propos — TechPulse",
+    "eyebrow": "À propos de TechPulse",
+    "heading": "L'actualité tech, pensée pour l'ingénieur.",
+    "subheading": "TechPulse est un magazine tech indépendant pour ceux qui construisent, sécurisent et déploient des logiciels modernes. Nous couvrons les produits, plateformes et personnes qui façonnent l'industrie.",
+    "valuesHeading": "Ce pour quoi nous nous battons",
+    "values": [
+      {
+        "title": "Le signal face au bruit",
+        "body": "Nous publions moins d'articles, mais de meilleure qualité : chaque pièce mérite sa place en expliquant ce qui a changé, pourquoi cela compte et ce qui vient ensuite."
+      },
+      {
+        "title": "Indépendants par conception",
+        "body": "Aucun classement sponsorisé, aucune couverture payante. Notre seul levier est la confiance des lecteurs qui construisent l'avenir."
+      },
+      {
+        "title": "L'artisanat dans chaque paragraphe",
+        "body": "Chaque story est rapportée, éditée et vérifiée par un éditeur humain avant d'atteindre la première page."
+      }
+    ],
+    "coverageHeading": "Nos sujets",
+    "coverage": [
+      "Intelligence Artificielle",
+      "Cloud & Infrastructure",
+      "Cybersécurité",
+      "Outils Développeurs",
+      "Open Source",
+      "Gadgets & Tests"
+    ],
+    "teamHeading": "La rédaction",
+    "readLatest": "Lisez les dernières stories de la rédaction",
+    "readLatestBody": "Chaque story TechPulse est publiée depuis notre CMS headless WordPress et rafraîchie toutes les heures.",
+    "browseAll": "Voir toutes les stories",
+    "talkNewsroom": "Parler à la rédaction"
+  },
+  "footer": {
+    "rights": "un CMS WordPress headless, livré avec Next.js.",
+    "edition": "Édition",
+    "followUs": "Suivez-nous"
+  },
+  "privacy": {
+    "eyebrow": "Confidentialité",
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : septembre 2026",
+    "intro": "TechPulse Magazine respecte votre vie privée. Cette page explique quelles données nous traitons quand vous lisez nos stories ou créez un compte, et comment vous gardez la main dessus.",
+    "dataHeading": "Données que nous collectons",
+    "dataBody": "Lorsque vous vous connectez avec Google, nous recevons votre nom, votre adresse e-mail et votre photo de profil. La lecture des stories ne demande aucun compte et n'enregistre aucune donnée personnelle.",
+    "cookiesHeading": "Cookies et sessions",
+    "cookiesBody": "Votre session est signée et stockée dans un cookie JWT : la rédaction ne conserve ni mot de passe ni base de données utilisateurs. Le simulateur de paiement dépose seulement un marqueur Premium pour l'affichage.",
+    "retentionHeading": "Durée de conservation",
+    "retentionBody": "Le cookie de session expire à la déconnexion. Le marqueur Premium de démonstration expire au bout de trente jours et vous pouvez l'effacer à tout moment.",
+    "rightsHeading": "Vos droits",
+    "rightsBody": "Vous pouvez demander l'accès, la rectification ou la suppression des données liées à votre compte. Écrivez-nous : nous répondons sous trente jours.",
+    "contactHeading": "Nous contacter",
+    "contactBody": "Une question sur vos données ou l'exercice de vos droits ? La rédaction vous répond directement.",
+    "dashboardCta": "Retour au tableau de bord",
+    "contactCta": "Écrire à la rédaction",
+    "cardBody": "Ce que nous faisons de vos données"
+  },
+  "notFound": {
+    "eyebrow": "Erreur 404",
+    "title": "Cette page a quitté le flux",
+    "body": "La page que vous cherchez n'existe pas ou a été déplacée. Rien de grave — les stories, elles, sont toujours en ligne.",
+    "categoriesHeading": "Rubriques principales"
+  },
+  "common": {
+    "allStories": "Toutes les stories",
+    "backToFront": "Retour à l'accueil",
+    "viewAll": "Voir tout",
+    "readMore": "Lire la suite",
+    "minutesRead": "{{count}} min de lecture",
+    "premium": "Premium",
+    "noStories": "Aucune story disponible",
+    "cmsError": "Le magazine n'a pas pu contacter le flux WordPress GraphQL.",
+    "cmsUnavailable": "Cette story est temporairement indisponible",
+    "cmsUnavailableBody": "Le magazine n'a pas pu contacter le flux WordPress GraphQL. {{error}}",
+    "cmsUnavailableCta": "Retour à l'accueil",
+    "homePartners": "Zone Partenaires TechPulse",
+    "homePartnersBody": "Votre produit devant 40 000 lecteurs tech : bannière partenaire, sans traceurs publicitaires.",
+    "homePartnersCta": "Devenir partenaire",
+    "sponsorBannerTitle": "Recrutez les meilleurs profils tech",
+    "sponsorBannerBody": "Espace sponsorisé — diffusez vos offres d'emploi auprès de la communauté TechPulse.",
+    "emptyArchive": "Aucune story en ligne pour l'instant",
+    "emptyArchiveBody": "Le flux WordPress GraphQL n'a renvoyé aucun article publié. Publiez une story dans le CMS, puis rechargez cette page."
+  }
+}

@@ -1,32 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 
-import type { Post } from "@/lib/wordpress";
+import type { PostSummary } from "@/lib/wordpress";
+import { useTranslation } from "@/lib/i18n";
 
 export type RelatedPostsProps = {
   /** Up to three recommended stories (the caller decides how they are picked). */
-  posts: Post[];
-  /** Section title, kept overridable so the rail can be reused elsewhere. */
-  heading?: string;
-  /** Small indigo eyebrow above the title. */
-  eyebrow?: string;
+  posts: PostSummary[];
 };
 
 /**
  * Recommended-reading rail for the article page.
  *
- * Server component: the micro-interactions are pure CSS (image zoom + border tint),
- * so the rail ships no JavaScript of its own. From `lg` up it sits next to the
- * article body as a sticky sidebar (`lg:sticky lg:top-8`); below `lg` the page grid
- * collapses and the very same markup becomes the "keep reading" section under the
- * story — one implementation for both placements.
+ * Client component so the eyebrow, the heading, the reading time and the
+ * "All stories" CTA follow the reader's language. Micro-interactions stay pure
+ * CSS (image zoom + border tint).
+ *
+ * The rail is a **plain, non-sticky column**: it stacks under the story on
+ * phones and sits in the `lg:col-span-4` sidebar track beside the article body.
+ * An earlier revision made it `lg:sticky lg:top-8`; inside a column that also
+ * holds the sidebar widgets, that pinned card scrolled over the widgets below
+ * it and produced an overlap, so the sticky is gone for good — page scrolling
+ * never repositions any sidebar card. See `src/components/blog/sidebar.tsx` for
+ * the column contract.
  */
-export function RelatedPosts({
-  posts,
-  heading = "Recommended reading",
-  eyebrow = "Keep reading",
-}: RelatedPostsProps) {
+export function RelatedPosts({ posts }: RelatedPostsProps) {
+  const { t } = useTranslation();
+
   if (posts.length === 0) {
     return null;
   }
@@ -34,17 +37,17 @@ export function RelatedPosts({
   return (
     <aside
       aria-labelledby="related-posts-heading"
-      className="flex flex-col gap-5 lg:sticky lg:top-8 lg:self-start"
+      className="flex flex-col gap-5"
     >
       <div className="flex flex-col gap-1.5 border-b border-border pb-3">
         <span className="text-[0.65rem] font-semibold tracking-[0.2em] text-primary uppercase">
-          {eyebrow}
+          {t("blog.article.recommendedEyebrow")}
         </span>
         <h2
           id="related-posts-heading"
           className="text-xl font-semibold tracking-tight text-foreground"
         >
-          {heading}
+          {t("blog.article.recommendedHeading")}
         </h2>
       </div>
 
@@ -70,13 +73,13 @@ export function RelatedPosts({
                   {post.category.name}
                 </span>
 
-                <h3 className="line-clamp-2 text-sm leading-snug font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-[#a5b4fc]">
+                <h3 className="line-clamp-2 text-sm leading-snug font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-link">
                   {post.title}
                 </h3>
 
                 <span className="mt-auto inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Clock className="size-3.5" aria-hidden="true" />
-                  {post.readingTime} min read
+                  {t("common.minutesRead", { count: post.readingTime })}
                 </span>
               </div>
             </Link>
@@ -85,10 +88,10 @@ export function RelatedPosts({
       </ul>
 
       <Link
-        href="/"
-        className="inline-flex items-center gap-2 self-start rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary/60 hover:text-[#a5b4fc] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        href="/blog"
+        className="inline-flex items-center gap-2 self-start rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary/60 hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
       >
-        All stories
+        {t("blog.article.recommendedCta")}
         <ArrowRight className="size-4" aria-hidden="true" />
       </Link>
     </aside>

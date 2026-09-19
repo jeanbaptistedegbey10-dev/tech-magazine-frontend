@@ -5,11 +5,11 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 
-import type { Post } from "@/lib/wordpress";
+import type { PostSummary } from "@/lib/wordpress";
 
 export type HeroSectionProps = {
-  /** Lead story of the issue. */
-  post: Post;
+  /** Lead story of the issue (summary — the CMS body never leaves the server). */
+  post: PostSummary;
 };
 
 /** Reveal props, collapsed to `{}` so `prefers-reduced-motion` users see static content. */
@@ -29,6 +29,12 @@ function reveal(prefersReducedMotion: boolean | null): RevealProps {
 /**
  * Lead-story hero: full-bleed imagery behind a dark overlay with oversized,
  * tightly tracked typography for the magazine's front page.
+ *
+ * Contrast contract: the copy sits on a photo + dark gradient scrim, so it
+ * always uses FIXED light inks (`text-white` / `text-slate-*`) — never the
+ * theme tokens (`text-foreground` / `text-muted-foreground`). The tokens flip
+ * to dark ink in the light theme (see `globals.css` `.light`), which would
+ * render dark-on-dark over the scrim and become unreadable.
  */
 export function HeroSection({ post }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -79,7 +85,7 @@ export function HeroSection({ post }: HeroSectionProps) {
           <span className="rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase">
             {post.category.name}
           </span>
-          <span className="text-[0.7rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+          <span className="text-[0.7rem] font-semibold tracking-[0.18em] text-slate-300 uppercase">
             Featured story
           </span>
         </motion.div>
@@ -87,7 +93,7 @@ export function HeroSection({ post }: HeroSectionProps) {
         <motion.h1
           {...animation}
           transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
-          className="max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:line-clamp-3 lg:text-5xl xl:text-6xl"
+          className="max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-balance text-white sm:text-5xl lg:line-clamp-3 lg:text-5xl xl:text-6xl"
         >
           {post.title}
         </motion.h1>
@@ -95,7 +101,7 @@ export function HeroSection({ post }: HeroSectionProps) {
         <motion.p
           {...animation}
           transition={{ duration: 0.6, delay: 0.16, ease: "easeOut" }}
-          className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:line-clamp-2"
+          className="max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg lg:line-clamp-2"
         >
           {post.excerpt}
         </motion.p>
@@ -113,8 +119,13 @@ export function HeroSection({ post }: HeroSectionProps) {
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
 
-          <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">{post.author}</span>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300">
+            <Link
+              href={`/blog/author/${post.authorSlug}`}
+              className="font-medium text-white transition-colors duration-300 hover:text-slate-200 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+            >
+              {post.author}
+            </Link>
             <time dateTime={post.date}>{post.publishedAt}</time>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="size-3.5" aria-hidden="true" />

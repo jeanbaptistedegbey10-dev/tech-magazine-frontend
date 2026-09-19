@@ -3,13 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowUpRight, Clock, Crown } from "lucide-react";
 import { cn } from "cn";
 
-import type { Post } from "@/lib/wordpress";
+import { T } from "@/components/blog/t";
+import type { PostSummary } from "@/lib/wordpress";
 
 export type PostCardProps = {
-  post: Post;
+  /** Summary — never the full `Post`, so the CMS body stays server-side. */
+  post: PostSummary;
   /** Position inside the grid — drives the fade-in stagger. */
   index?: number;
   /** Extra layout utilities merged onto the card root (kept for callers that need them). */
@@ -19,6 +21,7 @@ export type PostCardProps = {
 /**
  * Reusable editorial post card: indigo category badge, hover image zoom,
  * reading-time badge and a Framer Motion fade-up as the card enters the viewport.
+ * Premium stories (post.isPremium) carry an indigo "Premium" pill over the cover.
  */
 export function PostCard({ post, index = 0, className }: PostCardProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -32,14 +35,18 @@ export function PostCard({ post, index = 0, className }: PostCardProps) {
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
       className={cn(
         /* Strict grid alignment: every card fills its row track and pins its footer. */
-        "group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card",
+        "group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-card",
         "transition-colors duration-300 hover:border-primary/60",
         className
       )}
     >
+      {/*
+       * Story link covers the cover image, title and excerpt only: the footer
+       * carries its own author link and must never nest anchors.
+       */}
       <Link
         href={post.href}
-        className="flex h-full w-full flex-col rounded-2xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+        className="flex w-full flex-col rounded-2xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
       >
         <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-surface">
           <Image
@@ -61,34 +68,44 @@ export function PostCard({ post, index = 0, className }: PostCardProps) {
           <span className="absolute top-4 left-4 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.14em] text-primary-foreground uppercase">
             {post.category.name}
           </span>
+          {post.isPremium ? (
+            <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.14em] text-primary-foreground uppercase shadow-lg shadow-primary/40 ring-1 ring-white/25">
+              <Crown className="size-3" aria-hidden="true" />
+              <T k="common.premium" />
+            </span>
+          ) : null}
         </div>
 
         {/* Fixed-height text blocks keep titles, excerpts and footers on a shared baseline. */}
-        <div className="flex flex-1 flex-col gap-3 p-5">
-          <h3 className="line-clamp-2 h-[3.5rem] text-lg font-semibold tracking-tight text-balance text-foreground transition-colors duration-300 group-hover:text-[#a5b4fc]">
+        <div className="flex flex-1 flex-col gap-3 p-5 pb-3">
+          <h3 className="line-clamp-2 h-[3.5rem] text-lg font-semibold tracking-tight text-balance text-foreground transition-colors duration-300 group-hover:text-link">
             {post.title}
           </h3>
 
           <p className="line-clamp-3 h-[4.5rem] text-sm leading-relaxed text-muted-foreground">
             {post.excerpt}
           </p>
-
-          <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="size-3.5" aria-hidden="true" />
-              {post.readingTime} min read
-            </span>
-
-            <span className="inline-flex items-center gap-1.5">
-              <time dateTime={post.date}>{post.publishedAt}</time>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </span>
-          </div>
         </div>
       </Link>
+
+      <div className="mt-auto mx-5 flex items-center justify-between gap-3 border-t border-border pt-4 pb-5 text-xs text-muted-foreground">
+        <Link
+          href={`/blog/author/${post.authorSlug}`}
+          className="max-w-[45%] truncate font-medium text-foreground transition-colors duration-300 hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          {post.author}
+        </Link>
+
+        <span className="inline-flex items-center gap-1.5">
+          <Clock className="size-3.5" aria-hidden="true" />
+          <T k="common.minutesRead" params={{ count: post.readingTime }} />
+          <time dateTime={post.date}>{post.publishedAt}</time>
+          <ArrowUpRight
+            aria-hidden="true"
+            className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          />
+        </span>
+      </div>
     </motion.article>
   );
 }

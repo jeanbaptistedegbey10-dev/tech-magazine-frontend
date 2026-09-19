@@ -28,6 +28,18 @@ const nextConfig: NextConfig = {
         destination: "/blog/:slug",
         permanent: true,
       },
+      {
+        /**
+         * The AI & Cloud desk lives at the WordPress slug `ai-and-cloud`
+         * (term id 13). The home page once linked `/blog/category/ai-cloud`,
+         * which fell through `resolveCategory` to `notFound()`; any link,
+         * bookmark or crawler still carrying the short shape gets a permanent
+         * 308 instead of a 404.
+         */
+        source: "/blog/category/ai-cloud",
+        destination: "/blog/category/ai-and-cloud",
+        permanent: true,
+      },
     ];
   },
   images: {
@@ -40,6 +52,28 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "dev-tech-pulse-cms.pantheonsite.io",
+        pathname: "/**",
+      },
+      {
+        /**
+         * Google account avatars returned by Auth.js
+         * (`session.user.image`) and rendered by the masthead `UserMenu`.
+         */
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**",
+      },
+      {
+        /**
+         * WordPress author portraits. WPGraphQL resolves `user.avatar.url`
+         * through the site's avatar service, which on the Pantheon install
+         * answers with `https://secure.gravatar.com/avatar/<hash>?s=96&d=mm&r=g`
+         * — rendered by the `/blog/author/[slug]` header card. Without this
+         * entry the optimizer rejects the URL and the route falls back to the
+         * monogram disc.
+         */
+        protocol: "https",
+        hostname: "secure.gravatar.com",
         pathname: "/**",
       },
     ],

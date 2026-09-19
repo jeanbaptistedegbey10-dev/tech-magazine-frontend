@@ -1,0 +1,318 @@
+{
+  "nav": {
+    "home": "Home",
+    "allStories": "All stories",
+    "techNews": "Tech News",
+    "development": "Development",
+    "aiCloud": "AI & Cloud",
+    "about": "About",
+    "contact": "Contact",
+    "liveFeed": "Live feed"
+  },
+  "header": {
+    "brand": "TechPulse",
+    "tagline": "Magazine",
+    "search": "Search",
+    "searchPlaceholder": "Search the archives...",
+    "searchResults": "{{count}} result{{s}} for «{{query}}»",
+    "searchEmpty": "No articles found. Try another keyword.",
+    "searchHint": "Type at least 2 characters to explore the archives.",
+    "searchLoading": "Searching…",
+    "searchError": "Cannot reach the CMS.",
+    "escapeToClose": "Escape to close",
+    "language": "Language",
+    "close": "Close",
+    "menu": "Menu",
+    "themeLight": "Switch to light mode",
+    "themeDark": "Switch to dark mode"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "confirmPassword": "Confirm password",
+    "noAccount": "No account yet?",
+    "hasAccount": "Already registered?",
+    "seePlans": "See plans",
+    "comparePlans": "Compare plans",
+    "backToReading": "Back to reading",
+    "myAccount": "My account",
+    "signOut": "Sign out",
+    "dashboard": {
+      "accountStatus": "Account status",
+      "freeTier": "Free account",
+      "freeTierBody": "You have access to free articles. Upgrade to Premium to unlock all exclusive investigations.",
+      "upgradeCta": "Upgrade to Premium",
+      "settingsTitle": "Account settings",
+      "signOutHint": "Click to sign out of your account.",
+      "authInfo": "Sign-in information",
+      "provider": "Provider",
+      "session": "Session",
+      "active": "Active",
+      "demoNote": "Demo — account data comes from your Google sign-in. Premium subscription is simulated.",
+      "premiumTier": "Premium account",
+      "premiumTierBody": "Your Premium subscription is active. You have access to all exclusive investigations, ad-free, with the weekly newsletter.",
+      "successBanner": "Congratulations! Your Premium subscription is now active (Demo mode).",
+      "browseStories": "All stories",
+      "greeting": "Hello, {{name}}."
+    }
+  },
+  "subscribe": {
+    "pageTitle": "Subscribe — TechPulse",
+    "subtitle": "Support independent tech journalism.",
+    "free": "Free Reader",
+    "freeDesc": "The essentials of TechPulse, free.",
+    "premium": "TechPulse Premium",
+    "premiumDesc": "The best of the newsroom, without limits.",
+    "freeFeatures": [
+      "5 articles per month",
+      "Monthly newsletter",
+      "Reading with ads"
+    ],
+    "premiumFeatures": [
+      "Unlimited articles and investigations",
+      "Access to Premium content",
+      "Ad-free reading",
+      "Weekly newsletter",
+      "Priority reader support"
+    ],
+    "pricingMonthly": "{{price}} euros/month",
+    "pricingYearly": "or {{price}} euros/year — two months free.",
+    "pricingForever": "forever",
+    "ctaFree": "Create a free account",
+    "ctaPremium": "Subscribe to Premium",
+    "alreadySubscribed": "Already subscribed? Sign in",
+    "benefitsHeading": "Why upgrade to Premium?",
+    "benefit1Title": "Unlimited access to exclusive investigations",
+    "benefit1Body": "Long investigations, reserved dossiers and analysis, no monthly quota.",
+    "benefit2Title": "Ad-free reading",
+    "benefit2Body": "Total comfort on mobile and desktop, without ad trackers.",
+    "benefit3Title": "Weekly newsletter",
+    "benefit3Body": "The editors' picks and reporting behind-the-scenes, every Friday.",
+    "demoNote": "Demo — no payment is collected. Buttons lead to simulated sign-up.",
+    "sandboxBanner": "Demo mode: The payment system is in sandbox mode (no real card required).",
+    "yearlyPrice": "{{price}} euros/year",
+    "yearlyBadge": "Two months free",
+    "authRequired": "You must sign in with Google to complete this subscription. The email/password simulation is local and does not create a session.",
+    "submitting": "Processing…",
+    "checkoutError": "Payment error. Please try again.",
+    "eyebrow": "Subscriptions",
+    "subheading": "Start free, go Premium anytime. No commitment.",
+    "recommended": "Recommended"
+  },
+  "paywall": {
+    "heading": "This article is reserved for TechPulse Premium subscribers",
+    "body": "You are reading an excerpt. Unlock the full investigation, ad-free, and receive the editors' weekly newsletter.",
+    "benefits": [
+      "Unlimited access to exclusive investigations",
+      "Ad-free reading, on all your screens",
+      "Weekly newsletter reserved for members"
+    ],
+    "ctaSubscribe": "Subscribe from 9.99 €/month",
+    "ctaLogin": "Already subscribed? Sign in",
+    "footnote": "No commitment · Cancel anytime · 99 €/year with annual plan"
+  },
+  "blog": {
+    "archive": {
+      "eyebrow": "The archive",
+      "title": "All stories",
+      "emptyHeading": "No stories online yet",
+      "emptyBody": "The WordPress GraphQL feed returned no published articles. Publish a story in the CMS, then reload this page.",
+      "count": "{{count}} article{{s}} published, newest first",
+      "countLoading": "The archive is being restocked"
+    },
+    "category": {
+      "eyebrow": "The desk",
+      "siblings": "Explore the other desks:",
+      "emptyHeading": "Nothing published here yet",
+      "emptyBodyCms": "The magazine could not reach the WordPress GraphQL feed. {{error}}",
+      "emptyBodyNoPosts": "The {{name}} desk has no published stories. Publish one in the CMS, then reload this page.",
+      "count": "{{count}} article{{s}} filed in {{name}}",
+      "countEmpty": "Nothing filed in {{name}} yet"
+    },
+    "sidebar": {
+      "premiumHeading": "Upgrade to TechPulse Premium",
+      "premiumBody": "Unlimited exclusive investigations, ad-free reading and weekly newsletter.",
+      "benefits": [
+        "Unlimited access to Premium content",
+        "Ad-free reading"
+      ],
+      "ctaPremium": "Discover Premium",
+      "categoriesHeading": "Explore the sections",
+      "picksHeading": "Premium picks",
+      "unlockAll": "Unlock all Premium",
+      "sponsorEyebrow": "Advertisement",
+      "sponsorTitle": "Your brand here",
+      "sponsorBody": "Partner space — reach the tech decision makers who read TechPulse.",
+      "sponsorCta": "Become a sponsor",
+      "ariaLabel": "Sidebar"
+    },
+    "author": {
+      "eyebrow": "The newsroom",
+      "bioFallback": "Every story {{name}} has written for TechPulse Magazine.",
+      "count": "{{count}} article{{s}} written",
+      "emptyHeading": "No stories yet",
+      "countEmpty": "Nothing published here yet"
+    },
+    "article": {
+      "backLink": "Back to the front page",
+      "recommendedEyebrow": "Keep reading",
+      "recommendedHeading": "Recommended reading",
+      "recommendedCta": "All stories",
+      "shareLabel": "Share",
+      "shareOnX": "Share on X",
+      "shareOnLinkedIn": "Share on LinkedIn",
+      "shareOnWhatsApp": "Share on WhatsApp",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied",
+      "commentsHeading": "Discussion ({{count}})",
+      "commentsEmpty": "Be the first to react.",
+      "commentName": "Name",
+      "commentEmail": "Email",
+      "commentBody": "Comment",
+      "commentPlaceholder": "Your reaction to this story…",
+      "commentSubmit": "Publish reaction",
+      "commentSent": "Your reaction has been published.",
+      "commentSentTime": "Just now",
+      "commentBadge": "Your comment",
+      "writeAnother": "Write another reaction",
+      "discussionEyebrow": "Discussion",
+      "moderationNote": "Comments are moderated by the newsroom.",
+      "commentEmailNote": "Required to reply — never shown publicly.",
+      "commentDemoNote": "Demo — posting is simulated locally.",
+      "commentSentHeading": "Thanks {{name}}!",
+      "commentSentBody": "Your comment on “{{title}}” has just been published below.",
+      "commentSending": "Posting…",
+      "pictureCredit": "Editorial image from the TechPulse picture desk.",
+      "filedIn": "Filed in",
+      "reportedBy": "Reported by",
+      "moreStories": "More stories from TechPulse"
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact — TechPulse",
+    "eyebrow": "Contact",
+    "heading": "Write to the newsroom.",
+    "subheading": "A tip, a correction, a partnership idea? Write to us — an editor reads every message.",
+    "channelsHeading": "Contact channels",
+    "newsroom": {
+      "title": "Newsroom",
+      "address": "redaction@techpulse.news",
+      "body": "Story tips, corrections and editorial feedback. We read everything."
+    },
+    "press": {
+      "title": "Press",
+      "address": "presse@techpulse.news",
+      "body": "Launches, embargoes and interview requests for the editors."
+    },
+    "support": {
+      "title": "Reader support",
+      "address": "support@techpulse.news",
+      "body": "Account, reading and newsletter help — answered within two working days."
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "placeholderName": "Ada Lovelace",
+      "placeholderEmail": "ada@example.com",
+      "placeholderSubject": "Tip, correction, partnership…",
+      "placeholderMessage": "Tell the newsroom what is on your mind…",
+      "sending": "Sending…",
+      "send": "Send the message",
+      "sentHeading": "Message received, {{name}}",
+      "sentBody": "Thank you for writing about «{{subject}}». The newsroom will get back to you at {{email}} within two days.",
+      "writeAnother": "Send another message",
+      "demoNote": "Demo form — sending is simulated locally, nothing leaves your browser.",
+      "statusNote": "Your message is on its way to the newsroom…"
+    }
+  },
+  "about": {
+    "pageTitle": "About — TechPulse",
+    "eyebrow": "About TechPulse",
+    "heading": "Tech news, engineered.",
+    "subheading": "TechPulse is an independent technology magazine for people who build, secure and ship modern software. We cover the products, platforms and people shaping the industry.",
+    "valuesHeading": "What we stand for",
+    "values": [
+      {
+        "title": "Signal over noise",
+        "body": "We publish fewer, better stories: every piece earns its place by explaining what changed, why it matters and what happens next."
+      },
+      {
+        "title": "Independent by design",
+        "body": "No sponsored rankings, no pay-to-play coverage. Our only leverage is the trust of readers who build the future."
+      },
+      {
+        "title": "Craft in every paragraph",
+        "body": "Every story is reported, edited and fact-checked by a human editor before it reaches the front page."
+      }
+    ],
+    "coverageHeading": "Our coverage",
+    "coverage": [
+      "Artificial Intelligence",
+      "Cloud & Infrastructure",
+      "Cybersecurity",
+      "Developer Tools",
+      "Open Source",
+      "Gadgets & Reviews"
+    ],
+    "teamHeading": "The newsroom",
+    "readLatest": "Read the latest from the newsroom",
+    "readLatestBody": "Every story on TechPulse is published from our headless WordPress newsroom and refreshed hourly.",
+    "browseAll": "Browse all stories",
+    "talkNewsroom": "Talk to the newsroom"
+  },
+  "footer": {
+    "rights": "a headless WordPress CMS, delivered with Next.js.",
+    "edition": "Edition",
+    "followUs": "Follow us"
+  },
+  "privacy": {
+    "eyebrow": "Privacy",
+    "title": "Privacy policy",
+    "updated": "Last updated: September 2026",
+    "intro": "TechPulse Magazine respects your privacy. This page explains what data we process when you read our stories or create an account, and how you stay in control of it.",
+    "dataHeading": "Data we collect",
+    "dataBody": "When you sign in with Google we receive your name, email address and profile picture. Reading stories requires no account and stores no personal data.",
+    "cookiesHeading": "Cookies and sessions",
+    "cookiesBody": "Your session is signed and stored in a JWT cookie: the newsroom keeps no password and no user database. The payment simulator only drops a Premium marker for display.",
+    "retentionHeading": "How long we keep it",
+    "retentionBody": "The session cookie expires when you sign out. The demo Premium marker expires after thirty days and you can clear it at any time.",
+    "rightsHeading": "Your rights",
+    "rightsBody": "You can request access to, correction of, or deletion of the data linked to your account. Write to us: we answer within thirty days.",
+    "contactHeading": "Contact us",
+    "contactBody": "A question about your data, or want to exercise your rights? The newsroom answers you directly.",
+    "dashboardCta": "Back to dashboard",
+    "contactCta": "Write to the newsroom",
+    "cardBody": "What we do with your data"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "This page left the feed",
+    "body": "The page you are looking for does not exist or has moved. No worries — the stories are all still online.",
+    "categoriesHeading": "Main desks"
+  },
+  "common": {
+    "allStories": "All stories",
+    "backToFront": "Back to the front page",
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "minutesRead": "{{count}} min read",
+    "premium": "Premium",
+    "noStories": "No stories available",
+    "cmsError": "The magazine could not reach the WordPress GraphQL feed.",
+    "cmsUnavailable": "This story is temporarily unavailable",
+    "cmsUnavailableBody": "The magazine could not reach the WordPress GraphQL feed. {{error}}",
+    "cmsUnavailableCta": "Back to the front page",
+    "homePartners": "TechPulse Partner Zone",
+    "homePartnersBody": "Your product in front of 40,000 tech readers: partner banner, no ad trackers.",
+    "homePartnersCta": "Become a partner",
+    "sponsorBannerTitle": "Recruit the best tech talent",
+    "sponsorBannerBody": "Sponsored space — broadcast your job offers to the TechPulse community.",
+    "emptyArchive": "No stories online yet",
+    "emptyArchiveBody": "The WordPress GraphQL feed returned no published articles. Publish a story in the CMS, then reload this page."
+  }
+}
