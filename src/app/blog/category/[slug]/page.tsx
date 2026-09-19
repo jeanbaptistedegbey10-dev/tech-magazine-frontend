@@ -11,7 +11,7 @@ import { Sidebar } from "@/components/blog/sidebar";
 import { T } from "@/components/blog/t";
 import { getCategories, getPosts, toPostSummaries, WORDPRESS_GRAPHQL_ENDPOINT } from "@/lib/wordpress";
 type CategoryPageProps = { params: Promise<{ slug: string }> };
-type CategoryEntry = { slug: string; name: string; description: string };
+type CategoryEntry = { slug: string; name: string; description: string; id?: number };
 const CATEGORY_INDEX: CategoryEntry[] = [
   {
     slug: "tech-news",
@@ -58,11 +58,25 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const entry = await resolveCategory(slug);
   if (!entry) notFound();
-  const { posts, error } = await getPosts({
-    first: CATEGORY_POST_COUNT,
-    categoryName: entry.name,
-  });
   const categories = await getCategories();
+  // Prefer the WP term id: the `categoryName` lookup misses desks whose name
+  // contains `&` (WordPress stores it encoded, e.g. "AI & Cloud" → 0 posts),
+  // while the id lookup always hits. The live category list resolves the id
+  // even for slugs absent from the static index (e.g. `ai-and-cloud`,
+  // which `getCategories()` reports with count 6).
+  const liveMatch = categories.find(
+    (category) => category.slug.toLowerCase() === entry.slug.toLowerCase()
+  );
+  const categoryId =
+    typeof liveMatch?.id === "number"
+      ? liveMatch.id
+      : typeof entry.id === "number"
+        ? entry.id
+        : undefined;
+  const { posts, error } =
+    typeof categoryId === "number"
+      ? await getPosts({ first: CATEGORY_POST_COUNT, categoryId })
+      : await getPosts({ first: CATEGORY_POST_COUNT, categoryName: entry.name });
   const siblings = CATEGORY_INDEX.filter((candidate) => candidate.slug !== entry.slug);
   return (
     <div className="flex min-h-full flex-col">
@@ -164,14 +178,25 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 }
 async function resolveCategory(slug: string): Promise<CategoryEntry | null> {
   const cleanSlug = slug.trim().toLowerCase();
-  const indexed = CATEGORY_INDEX.find((entry) => entry.slug === cleanSlug);
-  if (indexed) return indexed;
+  // Legacy short shape kept as an alias: the canonical WP slug is
+  // `ai-and-cloud` (term id 13), but `/blog/category/ai-cloud` still reaches
+  // this page via the permanent 308 in `next.config.ts`.
+  const canonicalSlug = cleanSlug === "ai-cloud" ? "ai-and-cloud" : cleanSlug;
+  const indexed = CATEGORY_INDEX.find((entry) => entry.slug === canonicalSlug);
   const categories = await getCategories();
-  const match = categories.find((category) => category.slug.toLowerCase() === cleanSlug);
+  const match = categories.find(
+    (category) => category.slug.toLowerCase() === canonicalSlug
+  );
+  if (indexed) {
+    // Attach the live term id when available so the caller can filter by id
+    // (the only lookup that hits `&`-containing desks).
+    return typeof match?.id === "number" ? { ...indexed, id: match.id } : indexed;
+  }
   if (!match) return null;
   return {
     slug: match.slug,
     name: match.name,
     description: `The latest ${match.name} stories from the TechPulse newsroom, newest first.`,
+    id: typeof match.id === "number" ? match.id : undefined,
   };
 }
