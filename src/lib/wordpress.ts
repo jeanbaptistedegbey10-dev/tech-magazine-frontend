@@ -575,6 +575,34 @@ function estimateReadingTime(...sources: (string | null | undefined)[]): number 
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
+/** Forces `http://` CMS URLs onto `https://` so `next/image` never mixes content. */
+function forceHttpsUrl(value: string): string {
+  return value.toLowerCase().startsWith("http://") ? `https://${value.slice(7)}` : value;
+}
+
+/** Trims, forces HTTPS and rejects anything that is not a valid absolute `https://` URL. */
+function sanitizeImageUrl(value: string | null | undefined): string | null {
+  const trimmed = value?.trim();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  const upgraded = forceHttpsUrl(trimmed);
+
+  if (!upgraded.toLowerCase().startsWith("https://")) {
+    return null;
+  }
+
+  try {
+    new URL(upgraded);
+  } catch {
+    return null;
+  }
+
+  return upgraded;
+}
+
 /** Deterministic fallback image so a given post keeps the same artwork. */
 function pickFallbackImage(seed: string): PostImage {
   // FNV-1a: spreads slugs evenly across the pool so neighbouring posts differ.
@@ -592,7 +620,7 @@ function pickFallbackImage(seed: string): PostImage {
 
 function toPostImage(raw: WPRawPost, title: string): PostImage {
   const media = raw.featuredImage?.node;
-  const src = media?.sourceUrl?.trim();
+  const src = sanitizeImageUrl(media?.sourceUrl);
 
   if (!src) {
     return pickFallbackImage(raw.slug || title);
@@ -1052,7 +1080,7 @@ export async function getAuthorBySlug(slug: string): Promise<AuthorResult> {
         name,
         slug: raw.slug?.trim().toLowerCase() || slugifyAuthorName(name),
         bio: cleanText(raw.description),
-        avatarUrl: raw.avatar?.url?.trim() || null,
+        avatarUrl: sanitizeImageUrl(raw.avatar?.url),
       },
       error: null,
     };
