@@ -142,6 +142,13 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
               {t("auth.register")}
             </Link>
           </div>
+          <Link
+            href="/admin/dashboard"
+            onClick={onClose}
+            className="inline-flex items-center justify-center text-xs text-muted-foreground transition-colors hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            Espace Admin (démo)
+          </Link>
         </div>
       </div>
     </div>

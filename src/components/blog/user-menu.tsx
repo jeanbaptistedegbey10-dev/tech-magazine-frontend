@@ -44,12 +44,21 @@ export function UserMenu() {
 
   if (status !== "authenticated" || !session.user) {
     return (
-      <Link
-        href="/login"
-        className="text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-      >
-        {t("auth.login")}
-      </Link>
+      <span className="inline-flex items-center gap-3">
+        <Link
+          href="/admin/dashboard"
+          title="Espace Admin (démo)"
+          className="hidden text-xs text-muted-foreground transition-colors hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline"
+        >
+          Espace Admin
+        </Link>
+        <Link
+          href="/login"
+          className="text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          {t("auth.login")}
+        </Link>
+      </span>
     );
   }
 
@@ -59,6 +68,13 @@ export function UserMenu() {
 
   return (
     <div className="flex items-center gap-2">
+      <Link
+        href="/admin/dashboard"
+        title="Espace Admin (démo)"
+        className="hidden text-xs text-muted-foreground transition-colors hover:text-link focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline"
+      >
+        Espace Admin
+      </Link>
       <Link
         href="/dashboard"
         title={name}
