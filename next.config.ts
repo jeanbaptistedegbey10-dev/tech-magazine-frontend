@@ -5,8 +5,11 @@ import type { NextConfig } from "next";
  *
  * - `images.unsplash.com` -> curated editorial fallbacks used whenever a CMS
  *   post has no featured image (see `src/lib/wordpress.ts`).
- * - `dev-tech-pulse-cms.pantheonsite.io` -> WordPress media library URLs
- *   returned by WPGraphQL (`featuredImage.node.sourceUrl`).
+ * - Pantheon WordPress hosts -> media library URLs returned by WPGraphQL
+ *   (`featuredImage.node.sourceUrl`): the exact dev host plus a wildcard
+ *   covering every Pantheon environment (dev / test / live / renamed
+ *   project), in both `https` and `http`.
+ * - `secure.gravatar.com` -> WordPress author portraits.
  *
  * The `/**` path pattern is required because both hosts append transformation and
  * cache-busting query strings to their URLs.
@@ -52,6 +55,25 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "dev-tech-pulse-cms.pantheonsite.io",
+        pathname: "/**",
+      },
+      {
+        /**
+         * Pantheon WordPress hosts (all environments). The CMS endpoint is
+         * overridable via `NEXT_PUBLIC_WORDPRESS_API_URL` (see DEPLOYMENT.md),
+         * so any `*.pantheonsite.io` host — dev, test, live or a renamed
+         * project — must stay optimisable. The wildcard also covers the
+         * exact host above; both entries are kept so the intent stays explicit.
+         * The `http` entry only matters for local Pantheon mirrors; production
+         * traffic is `https`.
+         */
+        protocol: "https",
+        hostname: "**.pantheonsite.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "**.pantheonsite.io",
         pathname: "/**",
       },
       {
