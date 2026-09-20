@@ -24,7 +24,12 @@
     "close": "Schließen",
     "menu": "Menü",
     "themeLight": "Zum hellen Design wechseln",
-    "themeDark": "Zum dunklen Design wechseln"
+    "themeDark": "Zum dunklen Design wechseln",
+    "feedSubtitle": "Die neuesten Stories der Redaktion",
+    "feedLoading": "Feed wird geladen…",
+    "feedEmpty": "Noch keine Story veröffentlicht.",
+    "feedError": "Live-Feed konnte nicht geladen werden.",
+    "feedRefresh": "Feed aktualisieren"
   },
   "auth": {
     "login": "Anmelden",
@@ -288,6 +293,31 @@
     "dashboardCta": "Zurück zum Dashboard",
     "contactCta": "Der Redaktion schreiben",
     "cardBody": "Was wir mit Ihren Daten tun"
+  },
+  "terms": {
+    "eyebrow": "Impressum",
+    "title": "Impressum & AGB",
+    "updated": "Zuletzt aktualisiert: September 2026",
+    "intro": "TechPulse Magazine ist eine unabhängige Tech-Publikation. Diese Seite nennt den Herausgeber, den Hosting-Anbieter, die Nutzungsbedingungen unserer Inhalte sowie die Regeln für Leserkonten und das Demo-Premium-Abo.",
+    "publisherHeading": "Herausgeber",
+    "publisherBody": "TechPulse Magazine wird von der TechPulse-Redaktion herausgegeben. Verantwortlich für den Inhalt: das TechPulse-Redaktionsteam. Sie erreichen uns jederzeit über die Kontaktseite.",
+    "hostingHeading": "Hosting",
+    "hostingBody": "Das Magazin wird von Vercel Inc. ausgeliefert; die redaktionellen Inhalte stammen aus einem headless WordPress-CMS bei Pantheon.",
+    "ipHeading": "Geistiges Eigentum",
+    "ipBody": "Artikel, Grafiken und Logos bleiben Eigentum ihrer Autoren. Jede Vervielfältigung — auch auszugsweise — erfordert eine Quellenangabe und eine vorherige Zustimmung.",
+    "accountHeading": "Konten und Sitzungen",
+    "accountBody": "Leserkonten basieren auf der Google-Anmeldung: Das Magazin speichert keine Nutzerdatenbank. Sie können sich jederzeit über Ihr Dashboard abmelden.",
+    "subscriptionHeading": "Premium-Abo (Demo)",
+    "subscriptionBody": "Das Premium-Abo ist simuliert: Es wird keine echte Zahlung erhoben, und der Premium-Status liegt nur in einem Demo-Cookie-Marker.",
+    "liabilityHeading": "Haftung",
+    "liabilityBody": "Die Inhalte dienen ausschließlich der Information. TechPulse haftet nicht für indirekte Schäden aus deren Nutzung oder für vorübergehende Ausfälle des Dienstes.",
+    "lawHeading": "Anwendbares Recht",
+    "lawBody": "Dieses Impressum unterliegt französischem Recht. Wenden Sie sich bei Streitfällen zuerst an die Redaktion: Wir suchen stets eine gütliche Lösung.",
+    "contactHeading": "Eine rechtliche Frage?",
+    "contactBody": "Fragen zu diesem Impressum, zu Ihren Daten oder Rechten? Schreiben Sie uns — die Redaktion antwortet direkt.",
+    "contactCta": "Redaktion kontaktieren",
+    "privacyCta": "Datenschutzerklärung",
+    "footerLink": "Impressum"
   },
   "notFound": {
     "eyebrow": "Fehler 404",

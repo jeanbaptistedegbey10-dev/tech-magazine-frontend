@@ -24,7 +24,12 @@
     "close": "Fermer",
     "menu": "Menu",
     "themeLight": "Passer au thème clair",
-    "themeDark": "Passer au thème sombre"
+    "themeDark": "Passer au thème sombre",
+    "feedSubtitle": "Les dernières stories de la rédaction",
+    "feedLoading": "Chargement du flux…",
+    "feedEmpty": "Aucune story publiée pour l'instant.",
+    "feedError": "Impossible de charger le flux en direct.",
+    "feedRefresh": "Actualiser le flux"
   },
   "auth": {
     "login": "Connexion",
@@ -288,6 +293,31 @@
     "dashboardCta": "Retour au tableau de bord",
     "contactCta": "Écrire à la rédaction",
     "cardBody": "Ce que nous faisons de vos données"
+  },
+  "terms": {
+    "eyebrow": "Mentions légales",
+    "title": "Mentions légales & CGU",
+    "updated": "Dernière mise à jour : septembre 2026",
+    "intro": "TechPulse Magazine est une publication tech indépendante. Cette page précise qui édite le site, comment il est hébergé, ce que vous pouvez faire de nos contenus et les conditions qui encadrent les comptes lecteurs et l'abonnement Premium de démonstration.",
+    "publisherHeading": "Éditeur du site",
+    "publisherBody": "TechPulse Magazine est édité par la rédaction TechPulse. Directeur de la publication : l'équipe éditoriale TechPulse. Contactez-nous à tout moment via la page Contact.",
+    "hostingHeading": "Hébergement",
+    "hostingBody": "Le magazine est servi par Vercel Inc. ; les contenus éditoriaux proviennent d'un CMS WordPress headless hébergé sur Pantheon.",
+    "ipHeading": "Propriété intellectuelle",
+    "ipBody": "Les articles, illustrations et logos restent la propriété de leurs auteurs. Toute reproduction, même partielle, nécessite une attribution et un accord préalable.",
+    "accountHeading": "Comptes et sessions",
+    "accountBody": "Le compte lecteur repose sur la connexion Google : le magazine ne conserve aucune base de données utilisateurs. Vous pouvez vous déconnecter à tout moment depuis votre tableau de bord.",
+    "subscriptionHeading": "Abonnement Premium (démo)",
+    "subscriptionBody": "L'abonnement Premium est simulé : aucun paiement réel n'est collecté et le statut Premium n'est stocké que dans un marqueur de cookie de démonstration.",
+    "liabilityHeading": "Responsabilité",
+    "liabilityBody": "Les contenus sont fournis à titre informatif. TechPulse ne peut être tenu responsable des dommages indirects liés à leur usage, ni des indisponibilités temporaires du service.",
+    "lawHeading": "Droit applicable",
+    "lawBody": "Les présentes mentions sont soumises au droit français. Pour tout litige, contactez d'abord la rédaction : nous cherchons toujours une solution amiable.",
+    "contactHeading": "Une question légale ?",
+    "contactBody": "Pour toute question sur ces mentions, vos données ou vos droits, écrivez-nous : la rédaction vous répond directement.",
+    "contactCta": "Contacter la rédaction",
+    "privacyCta": "Politique de confidentialité",
+    "footerLink": "Mentions légales"
   },
   "notFound": {
     "eyebrow": "Erreur 404",

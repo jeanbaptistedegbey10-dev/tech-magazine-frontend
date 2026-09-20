@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionConfig } from "framer-motion";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
@@ -35,9 +36,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <SessionProvider>
-            <TranslationProvider>{children}</TranslationProvider>
-          </SessionProvider>
+          {/*
+           * `reducedMotion="user"` is framer-motion's hydration-safe way to
+           * honour the OS "reduce motion" setting: the preference is resolved
+           * at the *animation* level (positional transforms become instant),
+           * never in the rendered markup, so the server HTML and the hydration
+           * render stay identical. The previous per-component
+           * `useReducedMotion()` branching read `window.matchMedia` during the
+           * hydration render and produced the React #418 mismatch — never
+           * branch motion props on a browser value in render again.
+           */}
+          <MotionConfig reducedMotion="user">
+            <SessionProvider>
+              <TranslationProvider>{children}</TranslationProvider>
+            </SessionProvider>
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>

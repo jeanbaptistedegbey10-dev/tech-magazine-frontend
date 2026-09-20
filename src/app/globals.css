@@ -241,6 +241,20 @@
     html {
       scroll-behavior: auto;
     }
+
+    /*
+     * Framer Motion reveals (HeroSection / ArticleHeader / PostCard) are marked
+     * with `data-motion-reveal` and must render as STATIC content for readers
+     * with reduced motion enabled. The override lives in CSS — never in React
+     * state — so the server and hydration markup stay identical: resolving the
+     * preference in render (framer's `useReducedMotion` reads `matchMedia`
+     * during hydration) is what produced the React #418 mismatch. `!important`
+     * beats the motion inline styles without touching the markup.
+     */
+    [data-motion-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
   body {
     @apply bg-background text-foreground;

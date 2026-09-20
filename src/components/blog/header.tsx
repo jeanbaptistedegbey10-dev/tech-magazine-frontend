@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Zap } from "lucide-react";
 
+import { LiveFeedDialog } from "@/components/blog/live-feed-dialog";
 import { SearchDialog } from "@/components/blog/search-dialog";
 import { LanguageSelector } from "@/components/blog/language-selector";
 import { MobileMenu } from "@/components/blog/mobile-menu";
@@ -115,15 +116,13 @@ export function SiteHeader() {
             })}
 
             {/*
-             * The live-feed pill is the first rail item to go: below `xl` the
-             * seven nav entries, the search trigger, the theme switch, the
-             * account chip, the Premium CTA and the language selector need the
-             * whole row (the rail wraps gracefully if a locale needs more room).
+             * The live-feed trigger is the first rail item to go: below `xl`
+             * the seven nav entries, the search trigger, the theme switch,
+             * the account chip, the Premium CTA and the language selector need
+             * the whole row (the rail wraps gracefully if a locale needs more
+             * room).
              */}
-            <span className="hidden items-center gap-2 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground xl:inline-flex">
-              <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
-              {t("nav.liveFeed")}
-            </span>
+            <LiveFeedDialog />
 
             <SearchDialog />
 

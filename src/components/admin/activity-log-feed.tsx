@@ -49,7 +49,13 @@ export function ActivityLogFeed({ entries = ACTIVITY_LOG }: { entries?: Activity
                   <span className="rounded-full border border-border bg-surface px-2 py-0.5 font-medium">
                     {auditTypeLabel(entry.type)}
                   </span>
-                  <time dateTime={entry.timestamp}>{timeAgo(entry.timestamp)}</time>
+                  {/* `timeAgo` recomputes `Date.now()` at render; if the minute
+                      boundary flips between the server render and hydration the
+                      stamp text would differ — the stamp is exempted from the
+                      hydration diff instead of freezing the clock. */}
+                  <time dateTime={entry.timestamp} suppressHydrationWarning>
+                    {timeAgo(entry.timestamp)}
+                  </time>
                 </p>
               </div>
             </motion.li>

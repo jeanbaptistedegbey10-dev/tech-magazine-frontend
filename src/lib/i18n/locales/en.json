@@ -24,7 +24,12 @@
     "close": "Close",
     "menu": "Menu",
     "themeLight": "Switch to light mode",
-    "themeDark": "Switch to dark mode"
+    "themeDark": "Switch to dark mode",
+    "feedSubtitle": "The latest stories from the newsroom",
+    "feedLoading": "Loading the feed…",
+    "feedEmpty": "No story published yet.",
+    "feedError": "Could not load the live feed.",
+    "feedRefresh": "Refresh the feed"
   },
   "auth": {
     "login": "Sign in",
@@ -288,6 +293,31 @@
     "dashboardCta": "Back to dashboard",
     "contactCta": "Write to the newsroom",
     "cardBody": "What we do with your data"
+  },
+  "terms": {
+    "eyebrow": "Legal notice",
+    "title": "Legal notice & terms",
+    "updated": "Last updated: September 2026",
+    "intro": "TechPulse Magazine is an independent tech publication. This page states who publishes the site, how it is hosted, what you may do with our content and the terms governing reader accounts and the demo Premium subscription.",
+    "publisherHeading": "Publisher",
+    "publisherBody": "TechPulse Magazine is published by the TechPulse newsroom. Publication director: the TechPulse editorial team. Reach us at any time through the contact page.",
+    "hostingHeading": "Hosting",
+    "hostingBody": "The magazine is served by Vercel Inc.; editorial content comes from a headless WordPress CMS hosted on Pantheon.",
+    "ipHeading": "Intellectual property",
+    "ipBody": "Articles, artwork and logos remain the property of their authors. Any reproduction, even partial, requires attribution and prior agreement.",
+    "accountHeading": "Accounts and sessions",
+    "accountBody": "Reader accounts rely on Google sign-in: the magazine keeps no user database. You can sign out at any time from your dashboard.",
+    "subscriptionHeading": "Premium subscription (demo)",
+    "subscriptionBody": "The Premium subscription is simulated: no real payment is collected and the Premium status is only stored in a demo cookie marker.",
+    "liabilityHeading": "Liability",
+    "liabilityBody": "Content is provided for information purposes only. TechPulse cannot be held liable for indirect damages arising from its use, nor for temporary service unavailability.",
+    "lawHeading": "Governing law",
+    "lawBody": "This legal notice is governed by French law. For any dispute, contact the newsroom first: we always look for an amicable solution.",
+    "contactHeading": "A legal question?",
+    "contactBody": "For any question about this notice, your data or your rights, write to us: the newsroom answers directly.",
+    "contactCta": "Contact the newsroom",
+    "privacyCta": "Privacy policy",
+    "footerLink": "Legal notice"
   },
   "notFound": {
     "eyebrow": "Error 404",

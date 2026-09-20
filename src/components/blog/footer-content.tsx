@@ -35,13 +35,24 @@ export function SiteFooterContent({ endpoint }: { endpoint: string }) {
       </div>
 
       <div className="flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <p>&copy; {new Date().getFullYear()} TechPulse Magazine &mdash; {t("footer.rights")}</p>
+        {/* `getFullYear()` runs on both sides; on a page served from a static
+            cache across New Year's midnight the server and the browser could
+            disagree — the year is exempted from the hydration diff. */}
+        <p suppressHydrationWarning>
+          &copy; {new Date().getFullYear()} TechPulse Magazine &mdash; {t("footer.rights")}
+        </p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <Link
             href="/privacy"
             className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
             {t("privacy.title")}
+          </Link>
+          <Link
+            href="/terms"
+            className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            {t("terms.footerLink")}
           </Link>
           <p className="inline-flex items-center gap-2 break-all">
             <Rss className="size-3.5 shrink-0" aria-hidden="true" />

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, Clock, Crown } from "lucide-react";
 import { cn } from "cn";
 
@@ -20,17 +20,19 @@ export type PostCardProps = {
 
 /**
  * Reusable editorial post card: indigo category badge, hover image zoom,
- * reading-time badge and a Framer Motion fade-up as the card enters the viewport.
+ * reading-time badge and a Framer Motion fade-up as the card enters the
+ * viewport (hydration-safe: deterministic props + the `data-motion-reveal`
+ * CSS guard — see `hero-section.tsx` for the contract).
  * Premium stories (post.isPremium) carry an indigo "Premium" pill over the cover.
  */
 export function PostCard({ post, index = 0, className }: PostCardProps) {
-  const prefersReducedMotion = useReducedMotion();
   const delay = Math.min(index * 0.08, 0.4);
 
   return (
     <motion.article
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
-      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      data-motion-reveal
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
       className={cn(

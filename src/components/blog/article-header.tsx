@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
 
 import { T } from "@/components/blog/t";
@@ -39,19 +39,24 @@ export type ArticleHeaderProps = {
   showStandfirst?: boolean;
 };
 
-/** Reveal props, collapsed to `{}` so `prefers-reduced-motion` users see static content. */
-type RevealProps = {
-  initial?: { opacity: number; y: number };
-  animate?: { opacity: number; y: number };
-};
-
-function reveal(prefersReducedMotion: boolean | null): RevealProps {
-  if (prefersReducedMotion) {
-    return {};
-  }
-
-  return { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 } };
-}
+/**
+ * Reveal contract (hydration-safe — see also `src/app/globals.css`).
+ *
+ * The entrance props on the `motion.*` elements below are **deterministic**:
+ * identical on the server and during the hydration render. `useReducedMotion()`
+ * was removed from render on purpose — framer-motion 13 resolves it by reading
+ * `window.matchMedia("(prefers-reduced-motion)")` during the first client
+ * render, so a reader with reduced motion enabled hydrated collapsed props
+ * (`{}`) into markup the server had rendered with animation props (the
+ * `style="opacity:0…"` attribute) — the React #418 hydration mismatch.
+ *
+ * The reduced-motion preference is honoured instead by
+ * `<MotionConfig reducedMotion="user">` (mounted in `src/app/layout.tsx`,
+ * suppresses positional transforms at the animation level) plus the
+ * `[data-motion-reveal]` CSS guard in `src/app/globals.css`, which forces fully
+ * static content. Neither mechanism changes the rendered markup, so nothing
+ * can differ between SSR and hydration.
+ */
 
 /**
  * Editorial article masthead: indigo category badge, reading-time eyebrow,
@@ -59,9 +64,11 @@ function reveal(prefersReducedMotion: boolean | null): RevealProps {
  * slot (the compact featured image) and the author / date / reading-time byline
  * with the share actions on its trailing edge.
  *
- * Mirrors `hero-section.tsx` on purpose — same `reveal()` helper, same easing and
- * the same `prefers-reduced-motion` escape hatch — so an article animates in with
- * exactly the motion language of the front page.
+ * Mirrors `hero-section.tsx` on purpose — same deterministic reveal props, same
+ * easing and the same hydration-safe `prefers-reduced-motion` handling
+ * (`MotionConfig` + the `data-motion-reveal` CSS guard, never a render-time
+ * browser read) — so an article animates in with exactly the motion language of
+ * the front page.
  */
 export function ArticleHeader({
   post,
@@ -70,13 +77,12 @@ export function ArticleHeader({
   actions,
   showStandfirst = true,
 }: ArticleHeaderProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const animation = reveal(prefersReducedMotion);
-
   return (
     <header className={`flex w-full min-w-0 flex-col gap-5 ${className || ""}`}>
       <motion.div
-        {...animation}
+        data-motion-reveal
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
         className="flex w-full flex-wrap items-center gap-3"
       >
@@ -89,7 +95,9 @@ export function ArticleHeader({
       </motion.div>
 
       <motion.h1
-        {...animation}
+        data-motion-reveal
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: 0.06, ease: "easeOut" }}
         className="w-full text-3xl leading-[1.08] font-semibold tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl"
       >
@@ -98,7 +106,9 @@ export function ArticleHeader({
 
       {showStandfirst ? (
         <motion.p
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
           className="w-full text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
@@ -108,7 +118,9 @@ export function ArticleHeader({
 
       {media ? (
         <motion.div
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.16, ease: "easeOut" }}
           className="w-full"
         >
@@ -117,7 +129,9 @@ export function ArticleHeader({
       ) : null}
 
       <motion.div
-        {...animation}
+        data-motion-reveal
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: 0.22, ease: "easeOut" }}
         className="flex w-full flex-wrap items-center gap-4 border-y border-border py-4"
       >

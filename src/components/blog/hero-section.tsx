@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 
 import type { PostSummary } from "@/lib/wordpress";
@@ -12,19 +12,24 @@ export type HeroSectionProps = {
   post: PostSummary;
 };
 
-/** Reveal props, collapsed to `{}` so `prefers-reduced-motion` users see static content. */
-type RevealProps = {
-  initial?: { opacity: number; y: number };
-  animate?: { opacity: number; y: number };
-};
-
-function reveal(prefersReducedMotion: boolean | null): RevealProps {
-  if (prefersReducedMotion) {
-    return {};
-  }
-
-  return { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 } };
-}
+/**
+ * Reveal contract (hydration-safe — see also `src/app/globals.css`).
+ *
+ * The entrance props on the `motion.*` elements below are **deterministic**:
+ * identical on the server and during the hydration render. `useReducedMotion()`
+ * was removed from render on purpose — framer-motion 13 resolves it by reading
+ * `window.matchMedia("(prefers-reduced-motion)")` during the first client
+ * render, so a reader with reduced motion enabled hydrated collapsed props
+ * (`{}`) into markup the server had rendered with animation props (the
+ * `style="opacity:0…"` attribute) — the React #418 hydration mismatch.
+ *
+ * The reduced-motion preference is honoured instead by
+ * `<MotionConfig reducedMotion="user">` (mounted in `src/app/layout.tsx`,
+ * suppresses positional transforms at the animation level) plus the
+ * `[data-motion-reveal]` CSS guard in `src/app/globals.css`, which forces fully
+ * static content. Neither mechanism changes the rendered markup, so nothing
+ * can differ between SSR and hydration.
+ */
 
 /**
  * Lead-story hero: full-bleed imagery behind a dark overlay with oversized,
@@ -37,9 +42,6 @@ function reveal(prefersReducedMotion: boolean | null): RevealProps {
  * render dark-on-dark over the scrim and become unreadable.
  */
 export function HeroSection({ post }: HeroSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const animation = reveal(prefersReducedMotion);
-
   return (
     <section className="relative isolate w-full overflow-hidden rounded-3xl border border-border">
       <div className="absolute inset-0">
@@ -79,7 +81,9 @@ export function HeroSection({ post }: HeroSectionProps) {
        */}
       <div className="relative flex min-h-[380px] w-full flex-col justify-end gap-5 p-6 sm:p-10 lg:h-[50vh] lg:min-h-[440px] lg:max-h-[500px] lg:gap-4 lg:p-10 xl:min-h-[460px] xl:max-h-[460px]">
         <motion.div
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-wrap items-center gap-3"
         >
@@ -92,7 +96,9 @@ export function HeroSection({ post }: HeroSectionProps) {
         </motion.div>
 
         <motion.h1
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
           className="max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-balance text-white sm:text-5xl lg:line-clamp-3 lg:text-5xl xl:text-6xl"
         >
@@ -100,7 +106,9 @@ export function HeroSection({ post }: HeroSectionProps) {
         </motion.h1>
 
         <motion.p
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.16, ease: "easeOut" }}
           className="max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg lg:line-clamp-2"
         >
@@ -108,7 +116,9 @@ export function HeroSection({ post }: HeroSectionProps) {
         </motion.p>
 
         <motion.div
-          {...animation}
+          data-motion-reveal
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.24, ease: "easeOut" }}
           className="mt-1 flex flex-wrap items-center gap-x-5 gap-y-3"
         >
