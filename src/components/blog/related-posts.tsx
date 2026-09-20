@@ -63,6 +63,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
                   src={post.image.src}
                   alt={post.image.alt}
                   fill
+                  unoptimized={post.image.unoptimized}
                   sizes="80px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />

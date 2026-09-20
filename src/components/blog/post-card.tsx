@@ -53,6 +53,7 @@ export function PostCard({ post, index = 0, className }: PostCardProps) {
             src={post.image.src}
             alt={post.image.alt}
             fill
+            unoptimized={post.image.unoptimized}
             /*
              * Mirrors the grid: 1 column up to `md`, 2 up to `lg`, 3 up to `2xl` and
              * 4 columns from 1536px — so the optimizer never serves a ~33vw candidate

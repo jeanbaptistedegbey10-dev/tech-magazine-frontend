@@ -69,6 +69,14 @@ export type PostImage = {
   height: number;
   /** `true` when the CMS post has no featured image and an editorial fallback is used. */
   isFallback: boolean;
+  /**
+   * `true` when the asset must bypass the `/_next/image` optimizer and be
+   * served directly. Set for Pantheon (`*.pantheonsite.io`) media: Vercel's
+   * optimizer fetches the origin server-side and Pantheon answers its build
+   * bots with `502 Bad Gateway`, so those URLs render with
+   * `<Image unoptimized />` instead. Every other host stays optimised.
+   */
+  unoptimized?: boolean;
 };
 
 export type Post = {
@@ -580,6 +588,26 @@ function forceHttpsUrl(value: string): string {
   return value.toLowerCase().startsWith("http://") ? `https://${value.slice(7)}` : value;
 }
 
+/**
+ * `true` when an image URL is served by Pantheon (`*.pantheonsite.io`).
+ * Vercel's Image Optimization API fetches the origin server-side and Pantheon
+ * answers its build/optimization bots with `502 Bad Gateway`, so every
+ * Pantheon asset must render with `<Image unoptimized />` (direct `<img>`,
+ * no `/_next/image` proxy hop). All other hosts stay optimised.
+ */
+export function isPantheonImageUrl(value: string | null | undefined): boolean {
+  if (!value) {
+    return false;
+  }
+
+  try {
+    const hostname = new URL(value.trim()).hostname.toLowerCase();
+    return hostname === "pantheonsite.io" || hostname.endsWith(".pantheonsite.io");
+  } catch {
+    return false;
+  }
+}
+
 /** Trims, forces HTTPS and rejects anything that is not a valid absolute `https://` URL. */
 function sanitizeImageUrl(value: string | null | undefined): string | null {
   const trimmed = value?.trim();
@@ -632,6 +660,8 @@ function toPostImage(raw: WPRawPost, title: string): PostImage {
     width: media?.mediaDetails?.width || 1600,
     height: media?.mediaDetails?.height || 1067,
     isFallback: false,
+    // Pantheon blocks Vercel's optimizer (502) — serve these bytes directly.
+    unoptimized: isPantheonImageUrl(src) || undefined,
   };
 }
 

@@ -11,6 +11,16 @@ import type { NextConfig } from "next";
  *   project), in both `https` and `http`.
  * - `secure.gravatar.com` -> WordPress author portraits.
  *
+ * **Note (Phase 20):** the remotePatterns entries alone are not enough in
+ * production — Vercel's Image Optimization API fetches the origin server-side
+ * and Pantheon answers its bots with `502 Bad Gateway`, so `/_next/image`
+ * fails on every Pantheon asset. The fix is per-image, not config-level:
+ * `toPostImage()` tags Pantheon URLs (`PostImage.unoptimized`) and every
+ * `<Image />` passes `unoptimized={post.image.unoptimized}`, so those bytes are
+ * served directly (plain `<img>`, no optimizer hop) while Unsplash fallbacks,
+ * Google avatars and Gravatar portraits stay optimised. `images.unoptimized`
+ * is deliberately **not** set globally — it would degrade every image.
+ *
  * The `/**` path pattern is required because both hosts append transformation and
  * cache-busting query strings to their URLs.
  *

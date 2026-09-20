@@ -245,6 +245,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
                 width={post.image.width}
                 height={post.image.height}
                 preload
+                unoptimized={post.image.unoptimized}
                 sizes="(max-width: 1600px) 100vw, 1472px"
                 className="max-h-[380px] w-full rounded-xl object-cover"
               />

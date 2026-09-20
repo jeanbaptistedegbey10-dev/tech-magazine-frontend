@@ -48,6 +48,7 @@ export function HeroSection({ post }: HeroSectionProps) {
           alt={post.image.alt}
           fill
           preload
+          unoptimized={post.image.unoptimized}
           sizes="100vw"
           className="object-cover"
         />

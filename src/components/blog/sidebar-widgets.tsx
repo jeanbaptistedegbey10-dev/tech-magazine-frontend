@@ -129,6 +129,7 @@ export function PremiumPicksCard({ posts }: { posts: PostSummary[] }) {
                   src={post.image.src}
                   alt=""
                   fill
+                  unoptimized={post.image.unoptimized}
                   sizes="64px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
