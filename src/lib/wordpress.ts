@@ -854,8 +854,14 @@ async function fetchGraphQLOnce<TData>(
         Accept: "application/json",
       },
       body: JSON.stringify({ query, variables }),
-      // Hourly ISR window, invalidatable through `revalidateTag(POSTS_CACHE_TAG)`.
-      next: { revalidate: POSTS_REVALIDATE_SECONDS, tags: [POSTS_CACHE_TAG] },
+      // Hourly ISR window. Invalidated on demand from the CMS webhook via
+      // `revalidateTag("wordpress:posts")` (single request) or
+      // `revalidateTag("wordpress")` (broader — clears every WordPress-flavoured
+      // cache entry).
+      next: {
+        revalidate: POSTS_REVALIDATE_SECONDS,
+        tags: [POSTS_CACHE_TAG, "wordpress"],
+      },
       // A stalled CMS must never hold a render open.
       signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     });

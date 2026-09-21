@@ -53,6 +53,52 @@ Notes:
   needed: the zero-config Next.js preset handles routing, including the
   permanent redirect from the retired article path to the current one.
 
+## 4. On-Demand Revalidation webhook
+
+To keep the live site fresh when WordPress content changes — without
+waiting for the 1-hour ISR window to expire — configure an On-Demand
+Revalidation webhook.
+
+### 4.1 Environment variable
+
+Set `REVALIDATION_SECRET` to a strong, random shared secret for both the
+**Production** and **Preview** environments:
+
+| Name | Value |
+| ---- | ----- |
+| `REVALIDATION_SECRET` | `<a-strong-random-secret-string>` |
+
+Vercel dashboard path: **Project → Settings → Environment Variables**.
+
+Local development equivalent: add to `.env.local`:
+
+```bash
+REVALIDATION_SECRET=your-local-dev-secret
+```
+
+### 4.2 WordPress webhook URL
+
+Configure the webhook in WordPress (via the WP Webhooks or Headless
+Revalidate plugin) to call:
+
+```
+https://<your-vercel-domain>.app/api/revalidate?secret=<REVALIDATION_SECRET>
+```
+
+The secret matches against either a `secret` query parameter or an
+`Authorization: Bearer <secret>` header. On a mismatch the endpoint
+returns `401 Unauthorized`; on success it revalidates `/`, `/blog`, all
+desk/category archives, `/blog/author/[slug]` and `/blog/[slug]`, then
+returns `{ revalidated: true, now: <timestamp> }`.
+
+### 4.3 What gets invalidated
+
+The data layer tags every WPGraphQL `fetch()` call with the
+`wordpress:posts` cache tag. The webhook calls `revalidateTag("wordpress:posts")`
+which clears that tag across all statically and dynamically rendered pages
+that depend on WordPress data, so a single webhook POST refreshes the
+entire magazine.
+
 ## 3. Verify the deployment
 
 1. Open the production URL and check that the hero story and the card grid
